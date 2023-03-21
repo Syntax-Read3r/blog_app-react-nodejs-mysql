@@ -1,9 +1,5 @@
 // Importing necessary components from react-router-dom library
-import {
-	createBrowserRouter,
-	RouterProvider,
-	Route,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 
 // Importing necessary components for different pages of the application
 import Home from "./pages/Home";
@@ -26,7 +22,7 @@ const router = createBrowserRouter([
 				element: <Home />,
 			},
 			{
-				path: "/single-post",
+				path: "/post/:id",
 				element: <SinglePost />,
 			},
 			{
@@ -45,12 +41,13 @@ const router = createBrowserRouter([
 	},
 ]);
 
-
 // Defining parent component  which provides routing context to its child components
 function App() {
 	return (
-		<div>
+		<div className="app">
+			<div class="container">
 			<RouterProvider router={router} />
+			</div>
 		</div>
 	);
 }

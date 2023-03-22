@@ -106,10 +106,29 @@ $lightGreen: #b9e7e7;
 							color: teal;
 							background-color: white;
 							border: 1px solid teal;
+							-webkit-transition: all 0.3s ease-in-out;
+							-moz-transition: all 0.3s ease-in-out;
+							-ms-transition: all 0.3s ease-in-out;
+							-o-transition: all 0.3s ease-in-out;
 							transition: all 0.3s ease-in-out;
 						}
 					}
 				}
+			}
+		}
+
+		// [ ]: FOOTER
+
+		footer {
+			margin-top: 100px;
+			padding: 20px;
+			background-color: $lightGreen;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			font-size: 12px;
+			img {
+				width: 50px;
 			}
 		}
 	}

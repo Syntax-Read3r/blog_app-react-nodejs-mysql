@@ -88,4 +88,16 @@
   background-color: white;
   border: 1px solid teal;
   transition: all 0.3s ease-in-out;
+}
+.app .container footer {
+  margin-top: 100px;
+  padding: 20px;
+  background-color: #b9e7e7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+}
+.app .container footer img {
+  width: 50px;
 }/*# sourceMappingURL=style.css.map */

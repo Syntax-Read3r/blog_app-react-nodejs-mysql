@@ -8,15 +8,23 @@ const Home = () => {
 			title:
 				" Lorem ipsum dolor sit amet consectetur harum accusantium nemo placeat rem.",
 			desc: "Lorem ipsum  vitae eaque amet odit. Quia, praesentium. Cumque.",
-			img: "https://www.vecteezy.com/photo/9711199-sumatran-tiger-on-log",
+			img: "https://loremflickr.com/460/460",
 		},
-		{
-			id: 2,
-			title:
-				" Lorem ipsum dolor sit amet consectetur adipisicing elit.  consectetur, omnis magnam harum accusantium nemo placeat rem.",
-			desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. eaque amet odit. Quia, praesentium. Cumque.",
-			img: "https://www.vecteezy.com/photo/16274193-eurasian-lynx-in-winter",
-		},
+		
+			{
+				id: 2,
+				title:
+					" Lorem ipsum dolor sit amet consectetur harum accusantium nemo placeat rem.",
+				desc: "Lorem ipsum  vitae eaque amet odit. Quia, praesentium. Cumque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit adipisci incidunt facere excepturi, molestias quo. Fugit voluptates alias expedita iste beatae! Commodi eum id animi error earum cupiditate deleniti? Libero.",
+				img: "https://loremflickr.com/460/560",
+			},
+			{
+				id: 3,
+				title:
+					" Lorem ipsum dolor sit amet consectetur harum accusantium nemo placeat rem.",
+				desc: "Lorem ipsum  vitae eaque amet odit. Quia, praesentium. Cumque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit adipisci incidunt facere excepturi, molestias quo. Fugit voluptates alias expedita iste beatae! Commodi eum id animi error earum cupiditate deleniti? Libero.",
+				img: "https://loremflickr.com/460/760",
+			},
 	];
 
 	return (

@@ -10,6 +10,7 @@ import Write from "./pages/Write";
 
 import Layout from "./components/Layout";
 
+// import './styles/css/reset.css'
 import './styles/style.scss'
 
 // Define routing configuration using createBrowserRouter with relevant paths and associated components.

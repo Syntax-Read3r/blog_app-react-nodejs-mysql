@@ -287,4 +287,107 @@
   100% {
     transform: scale(1);
   }
+}
+.app .container .write-add {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+}
+.app .container .write-add .content {
+  flex: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.app .container .write-add .content input {
+  padding: 10px;
+  border: 1px solid rgb(103, 204, 125);
+  font-size: 90%;
+}
+.app .container .write-add .content .editorContainer {
+  height: 300px;
+  width: auto;
+  border: 4px solid lightblue;
+  overflow: none;
+}
+.app .container .write-add .content .editorContainer:hover, .app .container .write-add .content .editorContainer:focus {
+  box-shadow: 0 0 2px 0 rgba(12, 12, 13, 0.05), 0 4px 4px -4px rgba(12, 12, 13, 0.1), 0 2px 8px 0 rgba(12, 12, 13, 0.05);
+  transition: all 0.3s ease-in-out;
+}
+.app .container .write-add .content .editorContainer .editor {
+  height: 100%;
+  border: none;
+}
+.app .container .write-add .content .editorContainer .editor:focus {
+  outline: none;
+  box-shadow: 0 0 3px rgba(0, 0, 255, 0.5);
+  border-radius: 5px;
+}
+.app .container .write-add .menu {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.app .container .write-add .menu .item {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 10px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #555;
+  align-items: flex-start;
+}
+.app .container .write-add .menu .item .file {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.app .container .write-add .menu .item .buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.app .container .write-add .menu .item .buttons > button:first-of-type {
+  cursor: pointer;
+  color: teal;
+  background-color: #fff;
+  border: 1px solid teal;
+  padding: 3px 5px;
+  transition: all 0.25s ease-in-out;
+}
+.app .container .write-add .menu .item .buttons > button:first-of-type:hover, .app .container .write-add .menu .item .buttons > button:first-of-type:focus {
+  background-color: teal;
+  color: white;
+  transform: scale(1.1);
+}
+.app .container .write-add .menu .item .buttons > button:first-of-type:active {
+  color: teal;
+  background-color: #fff;
+  transition: 1;
+}
+.app .container .write-add .menu .item .buttons > button:last-of-type {
+  cursor: pointer;
+  color: white;
+  background-color: teal;
+  border: 1px solid teal;
+  padding: 3px 5px;
+  margin-left: 20px;
+  transition: all 0.25s ease-in-out;
+}
+.app .container .write-add .menu .item .buttons > button:last-of-type:hover, .app .container .write-add .menu .item .buttons > button:last-of-type:focus {
+  background-color: #005e4d;
+  color: white;
+  transform: scale(1.1);
+}
+.app .container .write-add .menu .item .buttons > button:last-of-type:active {
+  color: #005e4d;
+  background-color: teal;
+  transform: 1;
+}
+.app .container .write-add .menu .item .cat {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: teal;
 }/*# sourceMappingURL=style.css.map */

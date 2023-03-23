@@ -446,8 +446,7 @@ $lightGreen: #b9e7e7;
 							padding: 3px 5px;
 							transition: all 0.25s ease-in-out;
 
-							&:hover,
-							&:focus {
+							&:hover{
 								background-color: teal;
 								color: white;
 								transform: scale(1.1);
@@ -473,8 +472,8 @@ $lightGreen: #b9e7e7;
 							margin-left: 20px;
 							transition: all 0.25s ease-in-out;
 
-							&:hover,
-							&:focus {
+							&:hover
+					 {
 								background-color: #005e4d;
 								color: white;
 								transform: scale(1.1);
@@ -490,6 +489,8 @@ $lightGreen: #b9e7e7;
 								transform: 1;
 							}
 						}
+
+				
 					}
 
 					.cat {

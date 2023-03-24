@@ -36,7 +36,23 @@ export const register = (req, res) => {
 };
 
 export const login = (req, res) => {
-	res.json("from AUTH login controller");
+	
+    // Check if user exists
+    const q = "SELECT * FROM users WHERE username = ?";
+
+    db.query(q,[req.body.username], (err, data) => {
+        if(err) {
+            return res.json(err)
+        } else if (data.length === 0) {
+            return res.status(404).json('User Not Found!');
+        } else {
+            // Since there is no error, it's time to check if the password is correct
+            const isPasswordCorrect = bcrypt.compareSync(req.body.password, data[0].password) //The only item returned from the username is the first item that is to be selected then accessing the password using dot notation.
+            if(!isPasswordCorrect) {
+                return res.status(400).json('Incorrect Password!')
+            }
+        }
+    })
 };
 
 export const logout = (req, res) => {

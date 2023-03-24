@@ -10,6 +10,8 @@ const Register = () => {
 		password: "",
 	});
 
+	const [error, setError] = useState(null); // This is used to extract the error statement from res.data
+
 	const handleChange = (e) => {
 		setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 	};
@@ -21,7 +23,7 @@ const Register = () => {
 			const res = await axios.post("/auth/register", inputs);
 			console.log(res);
 		} catch (err) {
-			console.log(err);
+			setError(err.response.data);
 		}
 	};
 
@@ -54,7 +56,9 @@ const Register = () => {
 					onChange={handleChange}
 				/>
 				<button onClick={handleSubmit}>Register</button>
-				<p>this is an error!</p>
+
+				{error && <p>{error}</p>}
+
 				<span>
 					Do you have an account? <Link to="/login">Login</Link>
 				</span>

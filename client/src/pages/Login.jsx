@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { AuthContext } from "../context/authContext";
 
 const Login = () => {
 
@@ -13,6 +14,8 @@ const Login = () => {
 
 	const navigate = useNavigate();
 
+	const {login} = useContext(AuthContext);
+
 	const handleChange = (e) => {
 		setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 	};
@@ -21,7 +24,8 @@ const Login = () => {
 		// Since this is an API request. An async function is required on this instance and axios library
 		e.preventDefault();
 		try {
-			await axios.post("/auth/login", inputs);
+			await login(inputs)
+			console.log(localStorage.getItem('user'));
 			navigate('/')
 		} catch (err) {
 			setError(err.response.data);

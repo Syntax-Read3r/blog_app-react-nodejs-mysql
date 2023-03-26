@@ -1,22 +1,62 @@
-// Importing necessary dependencies
 import React, { useState } from "react";
-import ReactQuill from "react-quill"; // Importing a text editor package
-import "react-quill/dist/quill.snow.css"; //Importing the CSS file for the text editor theme
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import axios from "axios";
+import { useLocation, useNavigate } from "react-router-dom";
 
-// Creating a component named "Write"
 const Write = () => {
-	// Using the `useState` hook to declare a state variable 'value' and initialize it with empty value ""
-	const [value, setValue] = useState("");
+	const state = useLocation().state;
+	const [value, setValue] = useState(state?.title || "");
+	const [title, setTitle] = useState(state?.content || "");
+	const [file, setFile] = useState(null);
+	const [cat, setCat] = useState(state?.cat || "");
 
-	// Rendering the JSX
+	const navigate = useNavigate();
+
+	const upload = async () => {
+		try {
+			const formData = new FormData();
+			formData.append("file", file);
+			const res = await axios.post("/upload", formData);
+			return res.data;
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
+	const handleClick = async (e) => {
+		e.preventDefault();
+		const imgUrl = await upload();
+
+		try {
+			state
+				? await axios.put(`/posts/${state.id}`, {
+						title,
+						content: value,
+						cat,
+						img: file ? imgUrl : "",
+				  })
+				: await axios.post(`/posts/`, {
+						title,
+						content: value,
+						cat,
+						img: file ? imgUrl : "",
+				  });
+			navigate("/");
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
 	return (
-		<div className="write-add">
+		<div className="single">
 			<div className="content">
-				{/* Creating an input field for Title */}
-				<input type="text" name="" id="" placeholder="Title" />
-				{/* Creating the Quill Text Editor container */}
+				<input
+					type="text"
+					placeholder="Title"
+					onChange={(e) => setTitle(e.target.value)}
+				/>
 				<div className="editorContainer">
-					{/* Using the imported 'ReactQuill' component and setting its props */}
 					<ReactQuill
 						className="editor"
 						theme="snow"
@@ -25,69 +65,97 @@ const Write = () => {
 					/>
 				</div>
 			</div>
-
-			{/* Creating the menu section */}
 			<div className="menu">
-				{/* NOTE: Item One */}
 				<div className="item">
 					<h1>Publish</h1>
-					{/* Displaying the Status of the blog post */}
 					<span>
 						<b>Status: </b> Draft
 					</span>
-					{/* Displaying the Visibility of the blog post */}
 					<span>
 						<b>Visibility: </b> Public
 					</span>
-					{/* Creating a hidden input field to upload image and a label referencing that input */}
 					<input
 						style={{ display: "none" }}
 						type="file"
-						name="file"
 						id="file"
+						name=""
+						onChange={(e) => setFile(e.target.files[0])}
 					/>
 					<label className="file" htmlFor="file">
 						Upload Image
 					</label>
-					{/* Creating some buttons to Save or Update the blog post*/}
 					<div className="buttons">
 						<button>Save as a draft</button>
-						<button>Update</button>
+						<button onClick={handleClick}>Publish</button>
 					</div>
 				</div>
-
-				{/* Instead of the button, we can use this space for more content */}
-				{/* NOTE: Item Two */}
 				<div className="item">
 					<h1>Category</h1>
 					<div className="cat">
-						<input type="radio" name="cat" value="art" id="art" />
+						<input
+							type="radio"
+							checked={cat === "art"}
+							name="cat"
+							value="art"
+							id="art"
+							onChange={(e) => setCat(e.target.value)}
+						/>
 						<label htmlFor="art">Art</label>
 					</div>
-
 					<div className="cat">
-						<input type="radio" name="cat" value="science" id="science" />
+						<input
+							type="radio"
+							checked={cat === "science"}
+							name="cat"
+							value="science"
+							id="science"
+							onChange={(e) => setCat(e.target.value)}
+						/>
 						<label htmlFor="science">Science</label>
 					</div>
-
 					<div className="cat">
-						<input type="radio" name="cat" value="technology" id="technology" />
+						<input
+							type="radio"
+							checked={cat === "technology"}
+							name="cat"
+							value="technology"
+							id="technology"
+							onChange={(e) => setCat(e.target.value)}
+						/>
 						<label htmlFor="technology">Technology</label>
 					</div>
-
 					<div className="cat">
-						<input type="radio" name="cat" value="cinema" id="cinema" />
+						<input
+							type="radio"
+							checked={cat === "cinema"}
+							name="cat"
+							value="cinema"
+							id="cinema"
+							onChange={(e) => setCat(e.target.value)}
+						/>
 						<label htmlFor="cinema">Cinema</label>
 					</div>
-
 					<div className="cat">
-						<input type="radio" name="cat" value="Design" id="Design" />
-						<label htmlFor="Design">Design</label>
+						<input
+							type="radio"
+							checked={cat === "design"}
+							name="cat"
+							value="design"
+							id="design"
+							onChange={(e) => setCat(e.target.value)}
+						/>
+						<label htmlFor="design">Design</label>
 					</div>
-
 					<div className="cat">
-						<input type="radio" name="cat" value="Food" id="Food" />
-						<label htmlFor="Food">Food</label>
+						<input
+							type="radio"
+							checked={cat === "food"}
+							name="cat"
+							value="food"
+							id="food"
+							onChange={(e) => setCat(e.target.value)}
+						/>
+						<label htmlFor="food">Food</label>
 					</div>
 				</div>
 			</div>
@@ -95,5 +163,4 @@ const Write = () => {
 	);
 };
 
-// Exporting the `Write` component so that other components can import it.
 export default Write;

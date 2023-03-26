@@ -5,13 +5,13 @@ import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import SinglePost from "./pages/SinglePost";
+import SinglePost from "./pages/Single";
 import Write from "./pages/Write";
 
 import Layout from "./components/Layout";
 
 // import './styles/css/reset.css'
-import './styles/style.scss'
+import "./styles/style.scss";
 
 // Define routing configuration using createBrowserRouter with relevant paths and associated components.
 const router = createBrowserRouter([
@@ -48,8 +48,8 @@ const router = createBrowserRouter([
 function App() {
 	return (
 		<div className="app">
-			<div class="container">
-			<RouterProvider router={router} />
+			<div className="container">
+				<RouterProvider router={router} />
 			</div>
 		</div>
 	);

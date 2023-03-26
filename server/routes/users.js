@@ -1,8 +1,7 @@
-import express from "express";
-import { addPost } from "../controllers/post.js";
+import express from "express"
 
-const router = express.Router();
+const router = express.Router()
 
-router.get("/register", addPost);
+//TODO
 
-export default router;
+export default router

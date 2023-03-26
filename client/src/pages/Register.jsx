@@ -4,69 +4,64 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Register = () => {
-	const [inputs, setInputs] = useState({
-		username: "",
-		email: "",
-		password: "",
-	});
+  const [inputs, setInputs] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  const [err, setError] = useState(null);
 
-	const [error, setError] = useState(null); // This is used to extract the error statement from res.data
+  const navigate = useNavigate();
 
-	const navigate = useNavigate();
+  const handleChange = (e) => {
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
-	const handleChange = (e) => {
-		setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-	};
+  console.log(inputs);
 
-	const handleSubmit = async (e) => {
-		// Since this is an API request. An async function is required on this instance and axios library
-		e.preventDefault();
-		try {
-			await axios.post("/auth/register", inputs);
-			navigate('/login')
-		} catch (err) {
-			setError(err.response.data);
-		}
-	};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("/auth/register", inputs);
+      navigate("/login");
+    } catch (err) {
+      setError(err.response.data);
+    }
+  };
 
-	return (
-		<div className="auth">
-			<h1>Register</h1>
-			<form action="">
-				<input
-					required
-					type="text"
-					name="username"
-					id=""
-					placeholder="username"
-					onChange={handleChange}
-				/>
-				<input
-					required
-					type="email"
-					name="email"
-					id=""
-					placeholder="email"
-					onChange={handleChange}
-				/>
-				<input
-					required
-					type="password"
-					name="password"
-					id=""
-					placeholder="password"
-					onChange={handleChange}
-				/>
-				<button onClick={handleSubmit}>Register</button>
-
-				{error && <p>{error}</p>}
-
-				<span>
-					Do you have an account? <Link to="/login">Login</Link>
-				</span>
-			</form>
-		</div>
-	);
+  return (
+    <div className="auth">
+      <h1>Register</h1>
+      <form>
+        <input
+          required
+          type="text"
+          placeholder="username"
+          name="username"
+          onChange={handleChange}
+        />
+        <input
+          required
+          type="email"
+          placeholder="email"
+          name="email"
+          onChange={handleChange}
+        />
+        <input
+          required
+          type="password"
+          placeholder="password"
+          name="password"
+          onChange={handleChange}
+        />
+        <button onClick={handleSubmit}>Register</button>
+        {err && <p>{err}</p>}
+        <span>
+          Do you have an account? <Link to="/login">Login</Link>
+        </span>
+      </form>
+    </div>
+  );
 };
 
 export default Register;

@@ -19,7 +19,7 @@ export const getPosts = (req, res) => {
 
 	db.query(query, [category], (error, data) => {
 		if (error) {
-			return res.status(500).send({ error: "Internal server error" });
+			return res.status(500).send({ error: "Internal server error (post.js > getPosts)" });
 		}
 		return res.status(200).json(data);
 	});
